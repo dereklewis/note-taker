@@ -25,6 +25,7 @@ try {
 app.post("/api/notes", (req, res) => {
     const note = fs.readFileSync("./db/db.json", "utf8");
     const noteParsed = JSON.parse(note); 
+    uniqid.time(noteParsed);
     noteParsed.push(req.body);
     console.log(noteParsed);
     fs.writeFileSync("./db/db.json", JSON.stringify(noteParsed));
